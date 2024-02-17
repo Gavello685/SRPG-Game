@@ -7,6 +7,7 @@ extends Node
 @onready var _YLabel = $Node/YLabel
 @onready var _TurnLabel = $Node/TurnLabel
 @onready var _units = []
+@onready var _menu = $CursorNode/PopupMenu
 
 var tileSize = 32
 var mapWidth = 20
@@ -46,12 +47,7 @@ func _unhandled_input(event):
 		elif event.is_action_pressed("back"):
 			unit.unit_selected = false
 		if event.is_action_pressed("select") and unit.unit_selected and unit.position != unit._startPos:
-			var menu = PopupMenu.new()
-			menu.add_item("Attack")
-			menu.add_item("Item")
-			menu.position = _cursor.position
-			_cursor.add_child(menu)
-			menu.show()
+			_menu.show()
 	if event.is_action_pressed("start"):
 		turn+= 1
 
